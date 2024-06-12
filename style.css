@@ -1,0 +1,95 @@
+#leftBox, #rightBox {
+    height: 500px;
+    border: 1px solid black;
+    position: relative
+
+}
+
+#rightBox img {
+    width: 480px;
+    height: 335px;
+    z-index: 1;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+.piece {
+    position: absolute;
+    z-index: 5;
+}
+
+.square {
+    width: 103px;
+    height: 103px;
+    top: 340px;
+    left: 150px;
+    background-color: mediumpurple;
+}
+
+.parallelogram {
+    width: 147px;
+    height: 73px;
+    top: 340px;
+    left: 230px;
+    background-color: coral;
+    transform: skew(-45deg);
+}
+
+.smallTriangle1 {
+    width: 0;
+    height: 0;
+    top: 0px;
+    left: 0px;
+    border-left: 73px solid transparent;
+    border-right: 73px solid transparent;
+    border-bottom: 73px solid darkslategrey;
+}
+
+.smallTriangle2 {
+    width: 0;
+    height: 0;
+    top: 0px;
+    left: 60px;
+    border-left: 73px solid transparent;
+    border-right: 73px solid transparent;
+    border-bottom: 73px solid darkgray;
+}
+
+
+.mediumTriangle {
+    width: 0;
+    height: 0;
+    top: 60px;
+    left: 0px;
+    border-left: 103px solid transparent;
+    border-right: 103px solid transparent;
+    border-bottom: 103px solid lightblue;
+}
+
+.largeTriangle1 {
+    width: 0;
+    height: 0;
+    top: 170px;
+    left: 0px;
+    border-left: 147px solid transparent;
+    border-right: 147px solid transparent;
+    border-bottom: 147px solid indianred;
+}
+
+.largeTriangle2 {
+    width: 0;
+    height: 0;
+    top: 340px;
+    left: 0px;
+    border-left: 147px solid transparent;
+    border-right: 147px solid transparent;
+    border-bottom: 147px solid mediumseagreen;
+}
+
+
+
+
+
+
+
+

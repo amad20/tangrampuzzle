@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>drag.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #2aacb8;}
+.s4 { color: #7a7e85;}
+.s5 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+drag.js</font>
+</center></td></tr></table>
+<pre><span class="s0">$</span><span class="s1">(</span><span class="s2">function</span><span class="s1">() {</span>
+    <span class="s2">let </span><span class="s0">currentPiece </span><span class="s1">= </span><span class="s2">null</span><span class="s1">;</span>
+    <span class="s2">let </span><span class="s0">rotationDegree </span><span class="s1">= </span><span class="s3">0</span><span class="s1">; </span><span class="s4">// Tracks rotation.</span>
+
+    <span class="s4">// Setting up drag functionality for puzzle pieces.</span>
+    <span class="s0">$</span><span class="s1">(</span><span class="s5">&quot;.draggablePiece&quot;</span><span class="s1">).</span><span class="s0">draggable</span><span class="s1">({</span>
+        <span class="s0">start</span><span class="s1">: </span><span class="s2">function</span><span class="s1">() {</span>
+            <span class="s0">currentPiece </span><span class="s1">= </span><span class="s0">$</span><span class="s1">(</span><span class="s2">this</span><span class="s1">);</span>
+        <span class="s1">}</span>
+    <span class="s1">}).</span><span class="s0">on</span><span class="s1">(</span><span class="s5">&quot;click&quot;</span><span class="s1">, </span><span class="s2">function</span><span class="s1">() {</span>
+        <span class="s0">currentPiece </span><span class="s1">= </span><span class="s0">$</span><span class="s1">(</span><span class="s2">this</span><span class="s1">);</span>
+    <span class="s1">});</span>
+
+    <span class="s4">// Function to rotate the selected piece.</span>
+    <span class="s2">const </span><span class="s0">rotatePiece </span><span class="s1">= () =&gt; {</span>
+        <span class="s2">if </span><span class="s1">(</span><span class="s0">currentPiece</span><span class="s1">) {</span>
+            <span class="s0">rotationDegree </span><span class="s1">+= </span><span class="s3">45</span><span class="s1">;</span>
+            <span class="s0">currentPiece</span><span class="s1">.</span><span class="s0">css</span><span class="s1">(</span><span class="s5">'transform'</span><span class="s1">, </span><span class="s5">`rotate(</span><span class="s0">$</span><span class="s1">{</span><span class="s0">rotationDegree</span><span class="s1">}</span><span class="s5">deg)`</span><span class="s1">);</span>
+        <span class="s1">}</span>
+    <span class="s1">};</span>
+
+    <span class="s4">// Binding rotation function to rotate button click.</span>
+    <span class="s0">$</span><span class="s1">(</span><span class="s5">&quot;#rotate&quot;</span><span class="s1">).</span><span class="s0">on</span><span class="s1">(</span><span class="s5">&quot;click&quot;</span><span class="s1">, </span><span class="s0">rotatePiece</span><span class="s1">);</span>
+
+    <span class="s4">// Function to move the selected piece in a specified direction.</span>
+    <span class="s2">const </span><span class="s0">movePiece </span><span class="s1">= (</span><span class="s0">direction</span><span class="s1">) =&gt; {</span>
+        <span class="s2">if </span><span class="s1">(</span><span class="s0">currentPiece</span><span class="s1">) {</span>
+            <span class="s2">let </span><span class="s0">pos </span><span class="s1">= </span><span class="s0">currentPiece</span><span class="s1">.</span><span class="s0">position</span><span class="s1">();</span>
+            <span class="s2">switch </span><span class="s1">(</span><span class="s0">direction</span><span class="s1">) {</span>
+                <span class="s2">case </span><span class="s5">&quot;up&quot;</span><span class="s1">:    </span><span class="s0">currentPiece</span><span class="s1">.</span><span class="s0">css</span><span class="s1">(</span><span class="s5">'top'</span><span class="s1">, </span><span class="s5">`</span><span class="s0">$</span><span class="s1">{</span><span class="s0">pos</span><span class="s1">.</span><span class="s0">top </span><span class="s1">- </span><span class="s3">1</span><span class="s1">}</span><span class="s5">px`</span><span class="s1">); </span><span class="s2">break</span><span class="s1">;</span>
+                <span class="s2">case </span><span class="s5">&quot;right&quot;</span><span class="s1">: </span><span class="s0">currentPiece</span><span class="s1">.</span><span class="s0">css</span><span class="s1">(</span><span class="s5">'left'</span><span class="s1">, </span><span class="s5">`</span><span class="s0">$</span><span class="s1">{</span><span class="s0">pos</span><span class="s1">.</span><span class="s0">left </span><span class="s1">+ </span><span class="s3">1</span><span class="s1">}</span><span class="s5">px`</span><span class="s1">); </span><span class="s2">break</span><span class="s1">;</span>
+                <span class="s2">case </span><span class="s5">&quot;down&quot;</span><span class="s1">:  </span><span class="s0">currentPiece</span><span class="s1">.</span><span class="s0">css</span><span class="s1">(</span><span class="s5">'top'</span><span class="s1">, </span><span class="s5">`</span><span class="s0">$</span><span class="s1">{</span><span class="s0">pos</span><span class="s1">.</span><span class="s0">top </span><span class="s1">+ </span><span class="s3">1</span><span class="s1">}</span><span class="s5">px`</span><span class="s1">); </span><span class="s2">break</span><span class="s1">;</span>
+                <span class="s2">case </span><span class="s5">&quot;left&quot;</span><span class="s1">:  </span><span class="s0">currentPiece</span><span class="s1">.</span><span class="s0">css</span><span class="s1">(</span><span class="s5">'left'</span><span class="s1">, </span><span class="s5">`</span><span class="s0">$</span><span class="s1">{</span><span class="s0">pos</span><span class="s1">.</span><span class="s0">left </span><span class="s1">- </span><span class="s3">1</span><span class="s1">}</span><span class="s5">px`</span><span class="s1">); </span><span class="s2">break</span><span class="s1">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">};</span>
+
+    <span class="s4">// Binding move functions to respective buttons.</span>
+    <span class="s0">$</span><span class="s1">(</span><span class="s5">&quot;#moveUp&quot;</span><span class="s1">).</span><span class="s0">on</span><span class="s1">(</span><span class="s5">&quot;click&quot;</span><span class="s1">, () =&gt; </span><span class="s0">movePiece</span><span class="s1">(</span><span class="s5">&quot;up&quot;</span><span class="s1">));</span>
+    <span class="s0">$</span><span class="s1">(</span><span class="s5">&quot;#moveRight&quot;</span><span class="s1">).</span><span class="s0">on</span><span class="s1">(</span><span class="s5">&quot;click&quot;</span><span class="s1">, () =&gt; </span><span class="s0">movePiece</span><span class="s1">(</span><span class="s5">&quot;right&quot;</span><span class="s1">));</span>
+    <span class="s0">$</span><span class="s1">(</span><span class="s5">&quot;#moveDown&quot;</span><span class="s1">).</span><span class="s0">on</span><span class="s1">(</span><span class="s5">&quot;click&quot;</span><span class="s1">, () =&gt; </span><span class="s0">movePiece</span><span class="s1">(</span><span class="s5">&quot;down&quot;</span><span class="s1">));</span>
+    <span class="s0">$</span><span class="s1">(</span><span class="s5">&quot;#moveLeft&quot;</span><span class="s1">).</span><span class="s0">on</span><span class="s1">(</span><span class="s5">&quot;click&quot;</span><span class="s1">, () =&gt; </span><span class="s0">movePiece</span><span class="s1">(</span><span class="s5">&quot;left&quot;</span><span class="s1">));</span>
+<span class="s1">});</span>
+</pre>
+</body>
+</html>

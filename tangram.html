@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tangram</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> <!--including jQuery-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> <!--Bootstrap css-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> <!--bootstrap js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> <!-- jQuery -->
+    <link rel="stylesheet" href="./style.css">
+    <script type = "text/javascript"  src = "drag.js" ></script>
+</head>
+
+
+
+<body>
+<div class="container">
+    <div class="row">
+        <!-- Tangram pieces -->
+        <div class="col-md-6" id="leftBox">
+            <div class="piece smallTriangle1 draggablePiece" id="smallTriangle1"></div>
+            <div class="piece smallTriangle2 draggablePiece" id="smallTriangle2"></div>
+            <div class="piece mediumTriangle draggablePiece" id="mediumTriangle"></div>
+            <div class="piece largeTriangle1 draggablePiece" id="largeTriangle1"></div>
+            <div class="piece largeTriangle2 draggablePiece" id="largeTriangle2"></div>
+            <div class="piece square draggablePiece" id="square"></div>
+            <div class="piece parallelogram draggablePiece" id="parallelogram"></div>
+        </div>
+        <!-- Target figure -->
+        <div class="col-md-6" id="rightBox">
+            <img src="targetFigure.png" alt="Target Figure" width="100%" height="auto">
+        </div>
+    </div>
+    <div class="row">
+        <!-- buttons for glyphicons -->
+        <div class="btn-group">
+            <button type = "button" class="btn btn-default glyphicon glyphicon-repeat" id="rotate"></button>
+            <button type = "button" class="btn btn-default glyphicon glyphicon-arrow-up" id="moveUp"></button>
+            <button type = "button" class="btn btn-default glyphicon glyphicon-arrow-right" id="moveRight"></button>
+            <button type = "button" class="btn btn-default glyphicon glyphicon-arrow-down" id="moveDown"></button>
+            <button type = "button" class="btn btn-default glyphicon glyphicon-arrow-left" id="moveLeft"></button>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+
